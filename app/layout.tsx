@@ -2,18 +2,19 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "DSRT App",
-  description: "Next.js 14 + Tailwind + shadcn + Supabase",
+  title: "DSRT Simple",
+  description: "Next.js 14 + Tailwind starter tanpa error",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-gray-50 text-gray-900">
-        <header className="w-full p-4 bg-white shadow">
-          <h1 className="text-xl font-bold">DSRT 🚀</h1>
-        </header>
-        <main className="p-6">{children}</main>
+      <body className="min-h-screen flex items-center justify-center bg-gray-100 text-gray-900">
+        {children}
       </body>
     </html>
   );

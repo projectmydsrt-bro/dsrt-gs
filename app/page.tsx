@@ -1,53 +1,29 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { supabase } from "@/lib/supabaseClient";
 
 export default function HomePage() {
   const [count, setCount] = useState(0);
-  const [email, setEmail] = useState("");
-
-  const handleSubscribe = async () => {
-    const { error } = await supabase.from("subscribers").insert({ email });
-    if (error) {
-      alert("Gagal: " + error.message);
-    } else {
-      alert("Berhasil subscribe!");
-      setEmail("");
-    }
-  };
 
   return (
-    <div className="space-y-8">
-      <Card className="p-4">
-        <CardHeader>
-          <CardTitle className="text-lg font-semibold">Counter</CardTitle>
-        </CardHeader>
-        <CardContent className="flex items-center space-x-4">
-          <Button variant="destructive" onClick={() => setCount(count - 1)}>
-            -
-          </Button>
-          <span className="text-lg font-medium">{count}</span>
-          <Button onClick={() => setCount(count + 1)}>+</Button>
-        </CardContent>
-      </Card>
-
-      <Card className="p-4">
-        <CardHeader>
-          <CardTitle className="text-lg font-semibold">Subscribe</CardTitle>
-        </CardHeader>
-        <CardContent className="flex space-x-2">
-          <Input
-            placeholder="Masukkan email..."
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Button onClick={handleSubscribe}>Kirim</Button>
-        </CardContent>
-      </Card>
+    <div className="text-center space-y-4">
+      <h1 className="text-2xl font-bold">Halo dari Next.js 14 🚀</h1>
+      <p>Counter sederhana tanpa error:</p>
+      <div className="flex items-center justify-center space-x-4">
+        <button
+          onClick={() => setCount(count - 1)}
+          className="px-4 py-2 bg-red-500 text-white rounded"
+        >
+          -
+        </button>
+        <span className="text-xl">{count}</span>
+        <button
+          onClick={() => setCount(count + 1)}
+          className="px-4 py-2 bg-green-500 text-white rounded"
+        >
+          +
+        </button>
+      </div>
     </div>
   );
 }
